@@ -398,7 +398,7 @@ bool GameEngine::MessageContinue(const tstring& message) const
 	#ifdef UNICODE						
 		return MessageBoxW(GetWindow(), message.c_str(), m_Title.c_str(), MB_ICONWARNING | MB_OKCANCEL) == IDOK;
 	#else
-		return MessageBoxA(GetWindow(), text.c_str(), m_Title.c_str(), MB_ICONWARNING | MB_OKCANCEL) == IDOK;
+		return MessageBoxA(GetWindow(), message.c_str(), m_Title.c_str(), MB_ICONWARNING | MB_OKCANCEL) == IDOK;
 	#endif 
 }
 
@@ -408,7 +408,7 @@ void GameEngine::MessageBox(const tstring& message) const
 	#ifdef UNICODE						
 		MessageBoxW(GetWindow(), message.c_str(), m_Title.c_str(), MB_ICONEXCLAMATION | MB_OK);
 	#else
-		MessageBoxA(GetWindow(), text.c_str(), m_Title.c_str(), MB_ICONEXCLAMATION | MB_OK);
+		MessageBoxA(GetWindow(), message.c_str(), m_Title.c_str(), MB_ICONEXCLAMATION | MB_OK);
 	#endif 
 }
 

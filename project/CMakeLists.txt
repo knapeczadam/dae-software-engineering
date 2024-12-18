@@ -14,6 +14,8 @@ add_executable(${PROJECT_NAME}
 
 target_include_directories(${PROJECT_NAME} PUBLIC inc)
 
+target_link_libraries(${PROJECT_NAME} PRIVATE lua::lua sol2)
+
 add_definitions(-DUNICODE -D_UNICODE)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_HOME_DIRECTORY}/build/${CMAKE_SYSTEM_NAME}/${SYSTEM_ARCHITECTURE}/$<CONFIG>)

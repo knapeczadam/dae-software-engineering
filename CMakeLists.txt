@@ -1,14 +1,16 @@
-#--------------------------------------------------------------------------------------------------
+#---------------------------------------------------------------------------------------------------
 
 cmake_minimum_required(VERSION 3.30)                       # Minimum CMake version required for this project
+#---------------------------------------------------------------------------------------------------
+
 project(se)                                                # Declare the project name
 
-#--------------------------------------------------------------------------------------------------
+#---------------------------------------------------------------------------------------------------
 
 set(CMAKE_CXX_STANDARD 23)                                 # Set the C++ standard to C++23
 set(CMAKE_CXX_STANDARD_REQUIRED ON)                        # Set the C++ standard as required
 
-#--------------------------------------------------------------------------------------------------
+#---------------------------------------------------------------------------------------------------
 
 include(FetchContent)                                      # Include the FetchContent module, which allows for downloading and using external dependencies
 
@@ -26,8 +28,8 @@ FetchContent_Declare(                                      # FetchContent for th
 )
 FetchContent_MakeAvailable(sol2)                           # Make the Sol2 library available to the project
 
-#--------------------------------------------------------------------------------------------------
+#---------------------------------------------------------------------------------------------------
                                                            # Add the 'project' directory as a subdirectory
 add_subdirectory(project)                                  # This assumes there is a CMakeLists.txt in the 'project' directory for further configurations.
 
-#--------------------------------------------------------------------------------------------------
+#---------------------------------------------------------------------------------------------------

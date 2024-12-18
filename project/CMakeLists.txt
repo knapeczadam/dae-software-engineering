@@ -1,5 +1,10 @@
 project(game_engine)
 
+if (${CMAKE_SIZEOF_VOID_P} EQUAL 8)
+    set(SYSTEM_ARCHITECTURE x64)
+else ()
+    set(SYSTEM_ARCHITECTURE x86)
+endif ()
 
 add_executable(${PROJECT_NAME}
     src/AbstractGame.cpp
@@ -11,7 +16,7 @@ target_include_directories(${PROJECT_NAME} PUBLIC inc)
 
 add_definitions(-DUNICODE -D_UNICODE)
 
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_HOME_DIRECTORY}/build/$<CONFIG>)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_HOME_DIRECTORY}/build/${CMAKE_SYSTEM_NAME}/${SYSTEM_ARCHITECTURE}/$<CONFIG>)
 
 set_target_properties(${PROJECT_NAME}
         PROPERTIES

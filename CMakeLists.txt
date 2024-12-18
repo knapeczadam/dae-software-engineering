@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 3.30)
 project(se)
-set(CMAKE_CXX_STANDARD 23)
 
-add_subdirectory(project)
+set(CMAKE_CXX_STANDARD 23)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 include(FetchContent)
 
@@ -19,3 +19,5 @@ FetchContent_Declare(
         GIT_TAG "v3.3.1"
 )
 FetchContent_MakeAvailable(sol2)
+
+add_subdirectory(project)

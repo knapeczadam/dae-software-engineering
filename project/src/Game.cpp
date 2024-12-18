@@ -12,9 +12,11 @@
 // Game Member Functions																				
 //-----------------------------------------------------------------
 
-Game::Game() 																	
+
+#include <sol/sol.hpp>
+
+Game::Game()
 {
-	// nothing to create
 }
 
 Game::~Game()																						
@@ -43,7 +45,18 @@ void Game::Initialize()
 
 void Game::Start()
 {
-	// Insert code that needs to execute (once) at the start of the game, after the game window is created
+	sol::state lua;
+
+	try
+	{
+		lua.open_libraries(sol::lib::base); //sol::lib::math, sol::lib::string, ...
+		lua.script_file("game_breakout.lua");
+		GAME_ENGINE->MessageBox(_T("Lua script loaded successfully."));
+	}
+	catch (const sol::error &e)
+	{
+		GAME_ENGINE->MessageBox(_T("Lua script failed to load."));
+	}
 }
 
 void Game::End()

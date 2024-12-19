@@ -7,13 +7,13 @@
 // Include Files
 //-----------------------------------------------------------------
 #include "Game.h"
+#include "MyLua.h"
 
 //-----------------------------------------------------------------
 // Game Member Functions																				
 //-----------------------------------------------------------------
 
 
-#include <sol/sol.hpp>
 
 Game::Game()
 {
@@ -29,11 +29,16 @@ void Game::Initialize()
 	// Code that needs to execute (once) at the start of the game, before the game window is created
 
 	AbstractGame::Initialize();
-	GAME_ENGINE->SetTitle(_T("Game Engine version 8_01"));	
-	
-	GAME_ENGINE->SetWidth(1024);
-	GAME_ENGINE->SetHeight(768);
-    GAME_ENGINE->SetFrameRate(50);
+
+	auto luaInitialize = GetLua()["initialize"];
+	if (luaInitialize.valid())
+	{
+		luaInitialize();
+	}
+	else
+	{
+		GAME_ENGINE->MessageBox(_T("Initialize function not found."));
+	}
 
 	// Set the keys that the game needs to listen to
 	//tstringstream buffer;
@@ -45,33 +50,58 @@ void Game::Initialize()
 
 void Game::Start()
 {
-	sol::state lua;
-
-	try
+	// Insert code that needs to execute (once) at the start of the game, after the game window is created
+	auto luaStart = GetLua()["start"];
+	if (luaStart.valid())
 	{
-		lua.open_libraries(sol::lib::base); //sol::lib::math, sol::lib::string, ...
-		lua.script_file("game_breakout.lua");
-		GAME_ENGINE->MessageBox(_T("Lua script loaded successfully."));
+		luaStart();
 	}
-	catch (const sol::error &e)
+	else
 	{
-		GAME_ENGINE->MessageBox(_T("Lua script failed to load."));
+		GAME_ENGINE->MessageBox(_T("Start function not found."));
 	}
 }
 
 void Game::End()
 {
 	// Insert code that needs to execute when the game ends
+	auto luaEnd = GetLua()["end_"];
+	if (luaEnd.valid())
+	{
+		luaEnd();
+	}
+	else
+	{
+		GAME_ENGINE->MessageBox(_T("End function not found."));
+	}
 }
 
 void Game::Paint(RECT rect) const
 {
-	// Insert paint code 
+	// Insert paint code
+	auto luaPaint = GetLua()["paint"];
+	if (luaPaint.valid())
+	{
+		luaPaint(rect);
+	}
+	else
+	{
+		GAME_ENGINE->MessageBox(_T("Paint function not found."));
+	}
 }
 
 void Game::Tick()
 {
-	// Insert non-paint code that needs to execute each tick 
+	// Insert non-paint code that needs to execute each tick
+	auto luaTick = GetLua()["tick"];
+	if (luaTick.valid())
+	{
+		luaTick();
+	}
+	else
+	{
+		GAME_ENGINE->MessageBox(_T("Tick function not found."));
+	}
 }
 
 void Game::MouseButtonAction(bool isLeft, bool isDown, int x, int y, WPARAM wParam)
@@ -90,11 +120,29 @@ void Game::MouseButtonAction(bool isLeft, bool isDown, int x, int y, WPARAM wPar
 		}
 	}
 	*/
+	auto luaMouseButtonAction = GetLua()["mouse_button_action"];
+	if (luaMouseButtonAction.valid())
+	{
+		luaMouseButtonAction(isLeft, isDown, x, y, wParam);
+	}
+	else
+	{
+		GAME_ENGINE->MessageBox(_T("Mouse button action not found."));
+	}
 }
 
 void Game::MouseWheelAction(int x, int y, int distance, WPARAM wParam)
 {	
 	// Insert code for a mouse wheel action
+	auto luaMouseWheelAction = GetLua()["mouse_wheel_action"];
+	if (luaMouseWheelAction.valid())
+	{
+		luaMouseWheelAction(x, y, distance, wParam);
+	}
+	else
+	{
+		GAME_ENGINE->MessageBox(_T("Mouse wheel action not found."));
+	}
 }
 
 void Game::MouseMove(int x, int y, WPARAM wParam)
@@ -110,6 +158,15 @@ void Game::MouseMove(int x, int y, WPARAM wParam)
 		}
 	}
 	*/
+	auto luaMouseMove = GetLua()["mouse_move"];
+	if (luaMouseMove.valid())
+	{
+		luaMouseMove(x, y, wParam);
+	}
+	else
+	{
+		GAME_ENGINE->MessageBox(_T("Mouse move function not found."));
+	}
 }
 
 void Game::CheckKeyboard()
@@ -123,6 +180,15 @@ void Game::CheckKeyboard()
 	if (GAME_ENGINE->IsKeyDown(_T('M'))) xIcon += xSpeed;
 	if (GAME_ENGINE->IsKeyDown(_T('O'))) yIcon -= ySpeed;
 	*/
+	auto luaCheckKeyboard = GetLua()["check_keyboard"];
+	if (luaCheckKeyboard.valid())
+	{
+		luaCheckKeyboard();
+	}
+	else
+	{
+		GAME_ENGINE->MessageBox(_T("Check keyboard function not found."));
+	}
 }
 
 void Game::KeyPressed(TCHAR key)
@@ -152,13 +218,27 @@ void Game::KeyPressed(TCHAR key)
 		GAME_ENGINE->MessageBox("Escape menu.");
 	}
 	*/
+	auto luaKeyPressed = GetLua()["key_pressed"];
+	if (luaKeyPressed.valid())
+	{
+		luaKeyPressed(key);
+	}
+	else
+	{
+		GAME_ENGINE->MessageBox(_T("Key pressed function not found."));
+	}
 }
 
 void Game::CallAction(Caller* callerPtr)
 {
 	// Insert the code that needs to execute when a Caller (= Button, TextBox, Timer, Audio) executes an action
+	auto luaCallAction = GetLua()["call_action"];
+	if (luaCallAction.valid())
+	{
+		luaCallAction(callerPtr);
+	}
+	else
+	{
+		GAME_ENGINE->MessageBox(_T("Call action function not found."));
+	}
 }
-
-
-
-

@@ -1,62 +1,228 @@
 Game = {}
 
 
+--- @class GameEngine
 GameEngine = {}
 
+--- @param title string
+--- @return nil
 function GameEngine:set_title(title) end
+
+--- @param left number
+--- @param top number
+--- @return nil
 function GameEngine:set_window_position(left, top) end
+
+--- @param region HitRegion
+--- @return boolean
 function GameEngine:set_window_region(region) end
+
+--- @param keyList string
+--- @return nil
 function GameEngine:set_key_list(keyList) end
+
+--- @param frame number
+--- @return nil
 function GameEngine:set_frame(frame) end
+
+--- @param width number
+--- @return nil
 function GameEngine:set_width(width) end
+
+--- @param height number
+--- @return nil
 function GameEngine:set_height(height) end
 
+--- @return boolean
 function GameEngine:go_fullscreen() end
+
+--- @return boolean
 function GameEngine:go_window_mode() end
+
+--- @param value boolean
+--- @return nil
 function GameEngine:show_mouse_pointer(value) end
+
+--- @return nil
 function GameEngine:quit() end
 
+--- @return boolean
 function GameEngine:has_window_region() end
+
+--- @return boolean
 function GameEngine:is_fullscreen() end
 
+--- @param key number
+--- @return boolean
 function GameEngine:is_key_down(key) end
 
+--- @param message string
+--- @return nil
 function GameEngine:message_box(message) end
+
+--- @param message string
+--- @return nil
 function GameEngine:message_continue(message) end
 
+--- @param text string
+--- @param font Font
+--- @return Size
 function GameEngine:calculate_text_dimensions(text, font) end
+
+--- @param text string
+--- @param font Font
+--- @param rect Rect
+--- @return Size
 function GameEngine:calculate_text_dimensions(text, font, rect) end
 
+--- @param color Color
+--- @return nil
 function GameEngine:set_color(color) end
+
+--- @param font Font
+--- @return nil
 function GameEngine:set_font(font) end
 
+--- @param color Color
+--- @return boolean
 function GameEngine:fill_window_rect(color) end
 
+--- @param x1 number
+--- @param y1 number
+--- @param x2 number
+--- @param y2 number
+--- @return boolean
 function GameEngine:draw_line(x1, y1, x2, y2) end
 
+--- @param left number
+--- @param top number
+--- @param right number
+--- @param bottom number
+--- @return boolean
 function GameEngine:draw_rect(left, top, right, bottom) end
+
+--- @param left number
+--- @param top number
+--- @param right number
+--- @param bottom number
+--- @return boolean
 function GameEngine:fill_rect(left, top, right, bottom) end
+
+--- @param left number
+--- @param top number
+--- @param right number
+--- @param bottom number
+--- @param opacity number
+--- @return boolean
 function GameEngine:fill_rect(left, top, right, bottom, opacity) end
+
+--- @param left number
+--- @param top number
+--- @param right number
+--- @param bottom number
+--- @param radius number
+--- @return boolean
 function GameEngine:draw_round_rect(left, top, right, bottom, radius) end
+
+--- @param left number
+--- @param top number
+--- @param right number
+--- @param bottom number
+--- @param radius number
+--- @return boolean
 function GameEngine:fill_round_rect(left, top, right, bottom, radius) end
+
+--- @param left number
+--- @param top number
+--- @param right number
+--- @param bottom number
+--- @return boolean
 function GameEngine:draw_oval(left, top, right, bottom) end
+
+--- @param left number
+--- @param top number
+--- @param right number
+--- @param bottom number
+--- @return boolean
 function GameEngine:fill_oval(left, top, right, bottom) end
+
+--- @param left number
+--- @param top number
+--- @param right number
+--- @param bottom number
+--- @param opacity number
+--- @return boolean
 function GameEngine:fill_oval(left, top, right, bottom, opacity) end
+
+--- @param left number
+--- @param top number
+--- @param right number
+--- @param bottom number
+--- @param startDegree number
+--- @param angle number
+--- @return boolean
 function GameEngine:draw_arc(left, top, right, bottom, startDegree, angle) end
+
+--- @param left number
+--- @param top number
+--- @param right number
+--- @param bottom number
+--- @param startDegree number
+--- @param angle number
 function GameEngine:fill_arc(left, top, right, bottom, startDegree, angle) end
 
+--- @param text string
+--- @param left number
+--- @param top number
+--- @return number
 function GameEngine:draw_string(text, left, top) end
+
+--- @param text string
+--- @param left number
+--- @param top number
+--- @param right number
+--- @param bottom number
+--- @return number
 function GameEngine:draw_string(text, left, top, right, bottom) end
 
+--- @param bitmap Bitmap
+--- @param left number
+--- @param top number
+--- @return boolean
 function GameEngine:draw_bitmap(bitmap, left, top) end
+
+--- @param bitmap Bitmap
+--- @param left number
+--- @param top number
+--- @param sourceRect Rect
+--- @return boolean
 function GameEngine:draw_bitmap(bitmap, left, top, sourceRect) end
 
+--- @param ptsArr Point[]
+--- @param count number
+--- @return boolean
 function GameEngine:draw_polygon(ptsArr, count) end
+
+--- @param ptsArr Point[]
+--- @param count number
+--- @param close boolean
+--- @return boolean
 function GameEngine:draw_polygon(ptsArr, count, close) end
+
+--- @param ptsArr Point[]
+--- @param count number
+--- @return boolean
 function GameEngine:fill_polygon(ptsArr, count) end
+--- @param ptsArr Point[]
+--- @param count number
+--- @param close boolean
+--- @return boolean
 function GameEngine:fill_polygon(ptsArr, count, close) end
 
+--- @return Color
 function GameEngine:get_draw_color() end
+
+--- @return boolean
 function GameEngine:repaint() end
 
 function GameEngine:get_title() end
@@ -71,6 +237,8 @@ function GameEngine:get_window_position() end
 function GameEngine:tab_next(child_window) end
 function GameEngine:tab_previous(child_window) end
 
+--- @param message string
+--- @return nil
 function GameEngine:debug(message) end
 
 GAME_ENGINE = nil

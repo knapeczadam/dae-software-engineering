@@ -3,6 +3,7 @@ local HEIGHT = 500
 local FRAME = 50
 local x = 0
 local y = 0
+local debug_text = ""
 
 function initialize()
     GAME_ENGINE:set_title("Breakout")
@@ -12,7 +13,7 @@ function initialize()
 end
 
 function start()
-    GAME_ENGINE:message_box("Hello, Breakout!")
+
 end
 
 function end_()
@@ -34,6 +35,8 @@ function tick()
     if y > HEIGHT then
         y = 0
     end
+    debug_text = "x: " .. x .. ", y: " .. y
+    GAME_ENGINE:debug(debug_text)
 end
 
 function mouse_button_action(isLeft, isDown, x, y, param)
@@ -49,11 +52,12 @@ function mouse_move(x, y, param)
 end
 
 function check_keyboard()
-
+    if GAME_ENGINE:is_key_down(65) then
+        x = x - 1
+    end
 end
 
 function key_pressed(key)
-
 end
 
 function call_action(caller)

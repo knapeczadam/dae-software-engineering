@@ -43,6 +43,7 @@ set_target_properties(${PROJECT_NAME}                                # Configure
         PROPERTIES
         RUNTIME_OUTPUT_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}   # Use the custom output directory
         LINK_FLAGS "/SUBSYSTEM:WINDOWS"                              # Set the Windows subsystem to 'Windows' for GUI applications
+                                                                     # Alternatively, use WIN32 in add_executable() to set the subsystem
 )
 
 #---------------------------------------------------------------------------------------------------

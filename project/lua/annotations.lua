@@ -1,5 +1,3 @@
-Game = {}
-
 
 --- @class GameEngine
 GameEngine = {}
@@ -224,18 +222,6 @@ function GameEngine:get_draw_color() end
 
 --- @return boolean
 function GameEngine:repaint() end
-
-function GameEngine:get_title() end
-function GameEngine:get_instance() end
-function GameEngine:get_window() end
-function GameEngine:get_width() end
-function GameEngine:get_height() end
-function GameEngine:get_frame_rate() end
-function GameEngine:get_frame_delay() end
-function GameEngine:get_window_position() end
-
-function GameEngine:tab_next(child_window) end
-function GameEngine:tab_previous(child_window) end
 
 --- @param message string
 --- @return nil

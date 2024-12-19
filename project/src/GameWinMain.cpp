@@ -87,16 +87,6 @@ void InitLua()
 		),
 		"get_draw_color", &GameEngine::GetDrawColor,
 		"repaint", &GameEngine::Repaint,
-		"get_title", &GameEngine::GetTitle,
-		"get_instance", &GameEngine::GetInstance,
-		"get_window", &GameEngine::GetWindow,
-		"get_width", &GameEngine::GetWidth,
-		"get_height", &GameEngine::GetHeight,
-		"get_frame_rate", &GameEngine::GetFrameRate,
-		"get_frame_delay", &GameEngine::GetFrameDelay,
-		"get_window_position", &GameEngine::GetWindowPosition,
-		"tab_next", &GameEngine::TabNext,
-		"tab_previous", &GameEngine::TabPrevious,
 		"debug", &GameEngine::Debug
 		);
 

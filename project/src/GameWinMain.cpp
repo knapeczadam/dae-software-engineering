@@ -12,7 +12,6 @@
 #include "MyLua.h"
 
 #include <windows.h>
-#include <iostream>
 #include <io.h>
 #include <fcntl.h>
 
@@ -48,6 +47,10 @@ void InitLua()
 			static_cast<void (GameEngine::*)(const TCHAR*) const>(&GameEngine::MessageBox)
 		),
 		"message_continue", &GameEngine::MessageContinue,
+		"calculate_text_dimensions", sol::overload(
+			static_cast<SIZE (GameEngine::*)(const tstring&, const Font*) const>(&GameEngine::CalculateTextDimensions),
+			static_cast<SIZE (GameEngine::*)(const tstring&, const Font*, RECT) const>(&GameEngine::CalculateTextDimensions)
+		),
 		"set_color", &GameEngine::SetColor,
 		"set_font", &GameEngine::SetFont,
 		"fill_window_rect", &GameEngine::FillWindowRect,
@@ -74,14 +77,14 @@ void InitLua()
 			static_cast<bool (GameEngine::*)(const Bitmap*, int, int) const>(&GameEngine::DrawBitmap),
 			static_cast<bool (GameEngine::*)(const Bitmap*, int, int, RECT) const>(&GameEngine::DrawBitmap)
 		),
-		// "draw_polygon", sol::overload(
-			// static_cast<bool (GameEngine::*)(const POINT[], int) const>(&GameEngine::DrawPolygon),
-			// static_cast<bool (GameEngine::*)(const POINT[], int, bool) const>(&GameEngine::DrawPolygon)
-		// ),
-		// "fill_polygon", sol::overload(
-			// static_cast<bool (GameEngine::*)(const POINT[], int) const>(&GameEngine::FillPolygon),
-			// static_cast<bool (GameEngine::*)(const POINT[], int, bool) const>(&GameEngine::FillPolygon)
-		// ),
+		"draw_polygon", sol::overload(
+			sol::resolve<bool(const POINT[], int) const>(&GameEngine::DrawPolygon),
+			sol::resolve<bool(const POINT[], int, bool) const>(&GameEngine::DrawPolygon)
+		),
+		"fill_polygon", sol::overload(
+			sol::resolve<bool (const POINT[], int) const>(&GameEngine::FillPolygon),
+			sol::resolve<bool (const POINT[], int, bool) const>(&GameEngine::FillPolygon)
+		),
 		"get_draw_color", &GameEngine::GetDrawColor,
 		"repaint", &GameEngine::Repaint,
 		"get_title", &GameEngine::GetTitle,

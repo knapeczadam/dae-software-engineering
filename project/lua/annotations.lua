@@ -24,7 +24,8 @@ function GameEngine:is_key_down(key) end
 function GameEngine:message_box(message) end
 function GameEngine:message_continue(message) end
 
--- calculate_text_dimensions
+function GameEngine:calculate_text_dimensions(text, font) end
+function GameEngine:calculate_text_dimensions(text, font, rect) end
 
 function GameEngine:set_color(color) end
 function GameEngine:set_font(font) end
@@ -50,10 +51,10 @@ function GameEngine:draw_string(text, left, top, right, bottom) end
 function GameEngine:draw_bitmap(bitmap, left, top) end
 function GameEngine:draw_bitmap(bitmap, left, top, sourceRect) end
 
---function GameEngine:draw_polygon(ptsArr, count) end
---function GameEngine:draw_polygon(ptsArr, count, close) end
---function GameEngine:fill_polygon(ptsArr, count) end
---function GameEngine:fill_polygon(ptsArr, count, close) end
+function GameEngine:draw_polygon(ptsArr, count) end
+function GameEngine:draw_polygon(ptsArr, count, close) end
+function GameEngine:fill_polygon(ptsArr, count) end
+function GameEngine:fill_polygon(ptsArr, count, close) end
 
 function GameEngine:get_draw_color() end
 function GameEngine:repaint() end

@@ -454,7 +454,7 @@ void GameEngine::TabPrevious(HWND ChildWindow) const
 
 void GameEngine::Debug(tstring const &message) const
 {
-	tcout << message << endl;
+	tcout << "[DEBUG] " << message << endl;
 }
 
 void GameEngine::SetInstance(HINSTANCE hInstance) 

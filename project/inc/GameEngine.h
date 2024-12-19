@@ -146,6 +146,8 @@ public:
 	// Tab control
 	void		TabNext				(HWND ChildWindow)		const;
 	void		TabPrevious			(HWND ChildWindow)		const;
+
+	void        Debug               (tstring const &message)   const;
 		
 private:
 	// Private Member Functions	

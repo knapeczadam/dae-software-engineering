@@ -452,6 +452,11 @@ void GameEngine::TabPrevious(HWND ChildWindow) const
 	else SetFocus(childWindows[position - 1]);
 }
 
+void GameEngine::Debug(tstring const &message) const
+{
+	tcout << message << endl;
+}
+
 void GameEngine::SetInstance(HINSTANCE hInstance) 
 { 
 	m_Instance = hInstance; 

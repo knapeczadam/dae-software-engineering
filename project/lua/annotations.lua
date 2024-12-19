@@ -70,5 +70,7 @@ function GameEngine:get_window_position() end
 function GameEngine:tab_next(child_window) end
 function GameEngine:tab_previous(child_window) end
 
+function GameEngine:debug(message) end
+
 GAME_ENGINE = nil
 

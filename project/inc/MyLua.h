@@ -2,14 +2,15 @@
 
 #include <sol/sol.hpp>
 
-inline auto GetLua() -> sol::state&
+inline auto GetLua() -> sol::state &
 {
+    // TODO: better to create a singleton, finer control
     static sol::state m_Lua;
     return m_Lua;
 }
 
-template <typename... Args>
-inline void CallLuaFunction(char const *functionName, Args&&... args)
+template<typename... Args>
+inline void CallLuaFunction(char const *functionName, Args &&... args)
 {
     auto luaFunction = GetLua()[functionName];
     if (luaFunction.valid())

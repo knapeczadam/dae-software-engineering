@@ -19,11 +19,13 @@ inline void CallLuaFunction(char const *functionName, Args &&... args)
         if (!result.valid())
         {
             const sol::error err = result;
-            throw std::exception(err.what());
+            std::cerr << "[ERROR] Lua function '" << functionName << "' failed: " << err.what() << std::endl;
+            std::cin.get();
         }
     }
     else
     {
-        throw std::exception("Function not found.");
+        std::cerr << "[ERROR] Lua function '" << functionName << "' not found." << std::endl;
+        std::cin.get();
     }
 }

@@ -24,7 +24,7 @@ GameEngine* GAME_ENGINE{ &myGameEngine };
 void InitLua()
 {
     auto &lua = GetLua();
-    lua.open_libraries(sol::lib::base);
+    lua.open_libraries(sol::lib::base, sol::lib::package, sol::lib::math, sol::lib::table, sol::lib::string);
 
 	lua.new_usertype<GameEngine>(
 		"GameEngine",

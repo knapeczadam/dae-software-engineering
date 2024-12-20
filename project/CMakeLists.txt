@@ -48,16 +48,33 @@ set_target_properties(${PROJECT_NAME}                                # Configure
 
 #---------------------------------------------------------------------------------------------------
 
-add_custom_target(CopyScripts ALL                                    # Custom target for copying Lua scripts to the output directory
-        COMMENT "Copying Lua scripts to output directory"
+                                                                     # Find all Lua scripts in the 'lua' directory
+file(GLOB_RECURSE LUA_SCRIPTS "${CMAKE_CURRENT_SOURCE_DIR}/lua/*.lua")
+
+add_custom_target(CopyGameScripts ALL                                # Custom target for copying Lua scripts to the output directory
+        COMMENT "Copying Lua game scripts to output directory"
 )
 
-add_custom_command(TARGET CopyScripts POST_BUILD                     # Custom command to copy the Lua script to the runtime output directory after building
+add_custom_command(TARGET CopyGameScripts POST_BUILD                 # Custom command to copy the Lua script to the runtime output directory after building
         COMMAND ${CMAKE_COMMAND} -E copy_if_different
-        ${CMAKE_CURRENT_SOURCE_DIR}/lua/game_breakout.lua            # Source Lua script
-        ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/game_breakout.lua          # Destination in the output directory
+        ${LUA_SCRIPTS}                                               # Source Lua scripts
+        ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}                            # Destination in the output directory
 )
 
-add_dependencies(${PROJECT_NAME} CopyScripts)                        # Ensure the Lua script copying happens after the main executable is built
+add_dependencies(${PROJECT_NAME} CopyGameScripts)                    # Ensure the Lua script copying happens after the main executable is built
+
+#---------------------------------------------------------------------------------------------------
+
+add_custom_target(CopyTestScripts ALL                                # Custom target for copying Lua scripts to the output directory
+        COMMENT "Copying Lua test scripts to output directory"
+)
+
+add_custom_command(TARGET CopyTestScripts POST_BUILD                 # Custom command to copy the Lua script to the runtime output directory after building
+        COMMAND ${CMAKE_COMMAND} -E copy_directory
+        ${CMAKE_CURRENT_SOURCE_DIR}/test                             # Source Lua scripts
+        ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/test                       # Destination in the output directory
+)
+
+add_dependencies(${PROJECT_NAME} CopyTestScripts)                    # Ensure the Lua script copying happens after the main executable is built
 
 #---------------------------------------------------------------------------------------------------

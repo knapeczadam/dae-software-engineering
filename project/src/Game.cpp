@@ -116,7 +116,7 @@ void Game::CheckKeyboard()
 	if (GAME_ENGINE->IsKeyDown(_T('M'))) xIcon += xSpeed;
 	if (GAME_ENGINE->IsKeyDown(_T('O'))) yIcon -= ySpeed;
 	*/
-	auto luaCheckKeyboard = GetLua()["check_keyboard"];
+    CallLuaFunction("check_keyboard");
 }
 
 void Game::KeyPressed(TCHAR key)

@@ -14,6 +14,8 @@
 #include <windows.h>
 #include <io.h>
 #include <fcntl.h>
+#include <filesystem>
+#include <vector>
 
 //-----------------------------------------------------------------
 // Create GAME_ENGINE global (singleton) object and pointer
@@ -21,7 +23,7 @@
 GameEngine myGameEngine;
 GameEngine* GAME_ENGINE{ &myGameEngine };
 
-void InitLua()
+void InitLua(std::string const &scriptName)
 {
     auto &lua = GetLua();
     lua.open_libraries(sol::lib::base, sol::lib::package, sol::lib::math, sol::lib::table, sol::lib::string);
@@ -92,7 +94,7 @@ void InitLua()
 
 	lua["GAME_ENGINE"] = GAME_ENGINE;
 
-	auto const scriptResult = lua.safe_script_file("game_breakout.lua");
+	auto const scriptResult = lua.safe_script_file(scriptName);
 	if (!scriptResult.valid())
 	{
 		const sol::error err = scriptResult;
@@ -123,6 +125,59 @@ void AllocateConsole()
 	}
 }
 
+std::vector<tstring> ParseCommandLine(LPWSTR lpCmdLine)
+{
+    std::vector<tstring> args;
+    tstring cmdLine(lpCmdLine);
+    tstring currentArg;
+    bool insideQuotes = false;
+
+    for (size_t i = 0; i < cmdLine.size(); ++i)
+    {
+        if (cmdLine[i] == L'"') // Toggle the quote flag
+        {
+            insideQuotes = !insideQuotes;
+        }
+        else if (cmdLine[i] == L' ' && !insideQuotes)
+        {
+            // Argument separator
+            if (!currentArg.empty())
+            {
+                args.push_back(currentArg);
+                currentArg.clear();
+            }
+        }
+        else
+        {
+            currentArg += cmdLine[i];
+        }
+    }
+
+    // Add the last argument if any
+    if (!currentArg.empty())
+    {
+        args.push_back(currentArg);
+    }
+
+    return args;
+}
+
+auto LoadLuaScript(LPWSTR lpCmdLine) -> std::string
+{
+	std::vector<tstring> const args = ParseCommandLine(lpCmdLine);
+
+	std::string scriptName = "game_breakout.lua";
+	if (args.size() == 1)
+	{
+		const std::filesystem::path scriptPath(args[0]);
+
+		scriptName = scriptPath.filename().string();
+	}
+	std::cout << "[INFO] Using Script: " << scriptName << std::endl << std::endl;
+
+	return scriptName;
+}
+
 //-----------------------------------------------------------------
 // Main Function
 //-----------------------------------------------------------------
@@ -130,7 +185,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance
 {
     AllocateConsole();
 
-	InitLua();
+	InitLua(LoadLuaScript(lpCmdLine));
+	// HookLuaDebug();
 
 	GAME_ENGINE->SetGame(new Game());					// any class that implements AbstractGame
 

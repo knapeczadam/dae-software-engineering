@@ -30,9 +30,9 @@ inline void CallLuaFunction(char const *functionName, Args &&... args)
     }
 }
 
-inline void HookLuaDebug()
+inline void HookLuaDebug(lua_State *L)
 {
-    lua_sethook(GetLua(), [](lua_State *L, lua_Debug *ar)
+    lua_sethook(L, [](lua_State *L, lua_Debug *ar)
     {
         lua_getinfo(L, "nSl", ar); // Get detailed info about the current execution point
 

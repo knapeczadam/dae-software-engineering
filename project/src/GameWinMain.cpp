@@ -187,7 +187,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance
     AllocateConsole();
 
 	InitLua(LoadLuaScript(lpCmdLine));
-	// HookLuaDebug();
+	// HookLuaDebug(GetLua());
 
 	GAME_ENGINE->SetGame(new Game());					// any class that implements AbstractGame
 

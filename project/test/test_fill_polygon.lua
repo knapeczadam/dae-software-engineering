@@ -6,8 +6,6 @@ local WIDTH  = 500
 local HEIGHT = 500
 local FRAME  = 50
 
-local bitmap = Bitmap.new("test.bmp", true)
-
 function initialize()
     GAME_ENGINE:set_title(TITLE)
     GAME_ENGINE:set_width(WIDTH)

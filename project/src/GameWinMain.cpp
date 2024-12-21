@@ -31,18 +31,10 @@ void InitLua(std::string const &scriptName)
 	lua.new_usertype<GameEngine>(
 		"GameEngine",
 		"set_title", &GameEngine::SetTitle,
-		"set_window_position", &GameEngine::SetWindowPosition,
-		"set_window_region", &GameEngine::SetWindowRegion,
-		"set_key_list", &GameEngine::SetKeyList,
 		"set_frame", &GameEngine::SetFrameRate,
 		"set_width", &GameEngine::SetWidth,
 		"set_height", &GameEngine::SetHeight,
-		"go_fullscreen", &GameEngine::GoFullscreen,
-		"go_windowed_mode", &GameEngine::GoWindowedMode,
 		"show_mouse_pointer", &GameEngine::ShowMousePointer,
-		"quit", &GameEngine::Quit,
-		"has_window_region", &GameEngine::HasWindowRegion,
-		"is_fullscreen", &GameEngine::IsFullscreen,
 		"is_key_down", &GameEngine::IsKeyDown,
 		"message_box", sol::overload(
 			static_cast<void (GameEngine::*)(const tstring&) const>(&GameEngine::MessageBox),

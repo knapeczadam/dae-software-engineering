@@ -7,19 +7,6 @@ GameEngine = {}
 --- @return nil
 function GameEngine:set_title(title) end
 
---- @param left number
---- @param top number
---- @return nil
-function GameEngine:set_window_position(left, top) end
-
---- @param region HitRegion
---- @return boolean
-function GameEngine:set_window_region(region) end
-
---- @param keyList string
---- @return nil
-function GameEngine:set_key_list(keyList) end
-
 --- @param frame number
 --- @return nil
 function GameEngine:set_frame(frame) end
@@ -32,24 +19,9 @@ function GameEngine:set_width(width) end
 --- @return nil
 function GameEngine:set_height(height) end
 
---- @return boolean
-function GameEngine:go_fullscreen() end
-
---- @return boolean
-function GameEngine:go_window_mode() end
-
 --- @param value boolean
 --- @return nil
 function GameEngine:show_mouse_pointer(value) end
-
---- @return nil
-function GameEngine:quit() end
-
---- @return boolean
-function GameEngine:has_window_region() end
-
---- @return boolean
-function GameEngine:is_fullscreen() end
 
 --- @param key number
 --- @return boolean
@@ -220,9 +192,6 @@ function GameEngine:fill_polygon(ptsArr, count, close) end
 
 --- @return Color
 function GameEngine:get_draw_color() end
-
---- @return boolean
-function GameEngine:repaint() end
 
 --- @param message string
 --- @return nil

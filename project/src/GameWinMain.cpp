@@ -110,24 +110,19 @@ void InitLua(std::string const &scriptName)
 
 void AllocateConsole()
 {
-	// Allocate a new console for the application
-	if (AllocConsole())
+	if (AllocConsole())                          // Allocate a new console for the application
 	{
-		// Redirect STDOUT to the console
-		FILE *fp;
+		FILE *fp;                                // Redirect STDOUT to the console
 		freopen_s(&fp, "CONOUT$", "w", stdout);
-		setvbuf(stdout, NULL, _IONBF, 0); // Disable buffering for stdout
+		setvbuf(stdout, NULL, _IONBF, 0);        // Disable buffering for stdout
 
-		// Redirect STDERR to the console
-		freopen_s(&fp, "CONOUT$", "w", stderr);
-		setvbuf(stderr, NULL, _IONBF, 0); // Disable buffering for stderr
+		freopen_s(&fp, "CONOUT$", "w", stderr);  // Redirect STDERR to the console
+		setvbuf(stderr, NULL, _IONBF, 0);        // Disable buffering for stderr
 
-		// Redirect STDIN to the console
-		freopen_s(&fp, "CONIN$", "r", stdin);
-		setvbuf(stdin, NULL, _IONBF, 0); // Disable buffering for stdin
+		freopen_s(&fp, "CONIN$", "r", stdin);    // Redirect STDIN to the console
+		setvbuf(stdin, NULL, _IONBF, 0);         // Disable buffering for stdin
 
-		// Sync C++ streams with the console
-		std::ios::sync_with_stdio(true);
+		std::ios::sync_with_stdio(true);         // Sync C++ streams with the console
 	}
 }
 

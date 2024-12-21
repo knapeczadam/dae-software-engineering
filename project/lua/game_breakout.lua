@@ -42,7 +42,7 @@ function start()
     end
 end
 
-function end_()
+function on_destroy()
 end
 
 function paint(rect)

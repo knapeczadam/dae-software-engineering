@@ -1178,7 +1178,7 @@ LRESULT GameEngine::HandleEvent(HWND hWindow, UINT msg, WPARAM wParam, LPARAM lP
 
 		case WM_DESTROY:
 			// User defined code for ending the game
-			m_GamePtr->End();
+			m_GamePtr->OnDestroy();
 			
 			// End and exit the application
 			PostQuitMessage(0);

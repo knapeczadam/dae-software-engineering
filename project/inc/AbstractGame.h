@@ -34,7 +34,7 @@ public :
 	virtual void Initialize			();																// implemented in the .cpp file
 
 	virtual void Start				()														= 0;	// pure virtual function
-	virtual void End				()														= 0;	// pure virtual function
+	virtual void OnDestroy			()														= 0;	// pure virtual function
 	virtual void MouseButtonAction	(bool isLeft, bool isDown, int x, int y, WPARAM wParam) = 0;	// pure virtual function
 	virtual void MouseWheelAction	(int x, int y, int distance, WPARAM wParam)				= 0;	// pure virtual function
 	virtual void MouseMove			(int x, int y, WPARAM wParam)							= 0;	// pure virtual function

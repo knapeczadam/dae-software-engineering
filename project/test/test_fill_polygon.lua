@@ -19,7 +19,7 @@ function start()
 
 end
 
-function end_()
+function on_destroy()
 
 end
 

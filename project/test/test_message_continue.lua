@@ -17,7 +17,7 @@ function start()
     GAME_ENGINE:message_continue("Hello, World!")
 end
 
-function end_()
+function on_destroy()
 
 end
 

@@ -46,10 +46,10 @@ void Game::Start()
 	CallLuaFunction("start");
 }
 
-void Game::End()
+void Game::OnDestroy()
 {
 	// Insert code that needs to execute when the game ends
-	CallLuaFunction("end_");
+	CallLuaFunction("on_destroy");
 }
 
 void Game::Paint(RECT rect) const

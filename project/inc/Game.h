@@ -39,7 +39,7 @@ public:
 	//---------------------------
 	void Initialize			()															override;
 	void Start				()															override;
-	void End				()															override;
+	void OnDestroy			()															override;
 	void Paint				(RECT rect)	const											override;
 	void Tick				()															override;
 	void MouseButtonAction	(bool isLeft, bool isDown, int x, int y, WPARAM wParam)		override;

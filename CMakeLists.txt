@@ -1,6 +1,6 @@
 #---------------------------------------------------------------------------------------------------
 
-cmake_minimum_required(VERSION 3.30)                       # Minimum CMake version required for this project
+cmake_minimum_required(VERSION 3.29)                       # Minimum CMake version required for this project
 #---------------------------------------------------------------------------------------------------
 
 project(se)                                                # Declare the project name

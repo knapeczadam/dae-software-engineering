@@ -26,7 +26,7 @@ GameEngine* GAME_ENGINE{ &myGameEngine };
 void InitLua(std::string const &scriptName)
 {
     auto &lua = GetLua();
-    lua.open_libraries(sol::lib::base, sol::lib::package, sol::lib::math, sol::lib::table, sol::lib::string);
+    lua.open_libraries(sol::lib::base, sol::lib::package, sol::lib::math, sol::lib::table, sol::lib::string, sol::lib::os);
 
     lua.new_usertype<POINT>(
 	    "POINT",

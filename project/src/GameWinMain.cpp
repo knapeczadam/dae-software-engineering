@@ -80,15 +80,14 @@ void InitLua(std::string const &scriptName)
 			static_cast<bool (GameEngine::*)(const Bitmap*, int, int, RECT) const>(&GameEngine::DrawBitmap)
 		),
 		"draw_polygon", sol::overload(
-			sol::resolve<bool(const POINT[], int) const>(&GameEngine::DrawPolygon),
-			sol::resolve<bool(const POINT[], int, bool) const>(&GameEngine::DrawPolygon)
+			sol::resolve<bool (std::vector<POINT>, int) const>(&GameEngine::DrawPolygon),
+			sol::resolve<bool (std::vector<POINT>, int, bool) const>(&GameEngine::DrawPolygon)
 		),
 		"fill_polygon", sol::overload(
-			sol::resolve<bool (const POINT[], int) const>(&GameEngine::FillPolygon),
-			sol::resolve<bool (const POINT[], int, bool) const>(&GameEngine::FillPolygon)
+			sol::resolve<bool (std::vector<POINT>, int) const>(&GameEngine::FillPolygon),
+			sol::resolve<bool (std::vector<POINT>, int, bool) const>(&GameEngine::FillPolygon)
 		),
 		"get_draw_color", &GameEngine::GetDrawColor,
-		"repaint", &GameEngine::Repaint,
 		"debug", &GameEngine::Debug
 		);
 

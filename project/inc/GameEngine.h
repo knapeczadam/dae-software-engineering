@@ -127,8 +127,12 @@ public:
 
 	bool		DrawPolygon			(const POINT ptsArr[], int count)										const;
 	bool		DrawPolygon			(const POINT ptsArr[], int count, bool close)							const;
+	bool		DrawPolygon			(std::vector<POINT> points, int count)									const;
+	bool		DrawPolygon			(std::vector<POINT> points, int count, bool close)						const;
 	bool		FillPolygon			(const POINT ptsArr[], int count)										const;
 	bool		FillPolygon			(const POINT ptsArr[], int count, bool close)							const;
+	bool		FillPolygon			(std::vector<POINT> points, int count)									const;
+	bool		FillPolygon			(std::vector<POINT> points, int count, bool close)						const;
 
 	COLORREF	GetDrawColor		()						const;
 	bool		Repaint				()						const;

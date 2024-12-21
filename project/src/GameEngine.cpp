@@ -540,6 +540,16 @@ bool GameEngine::DrawPolygon(const POINT ptsArr[], int count, bool close) const
 	else return false;
 }
 
+bool GameEngine::DrawPolygon(std::vector<POINT> points, int count) const
+{
+	return DrawPolygon(std::move(points), count, false);
+}
+
+bool GameEngine::DrawPolygon(std::vector<POINT> points, int count, bool close) const
+{
+	return DrawPolygon(points.data(), count, close);
+}
+
 bool GameEngine::FillPolygon(const POINT ptsArr[], int count) const
 {
 	return FillPolygon(ptsArr, count, false);
@@ -570,6 +580,16 @@ bool GameEngine::FillPolygon(const POINT ptsArr[], int count, bool close) const
 		return true;
 	}
 	else return false;
+}
+
+bool GameEngine::FillPolygon(std::vector<POINT> points, int count) const
+{
+	return FillPolygon(std::move(points), count, false);
+}
+
+bool GameEngine::FillPolygon(std::vector<POINT> points, int count, bool close) const
+{
+	return FillPolygon(points.data(), count, close);
 }
 
 void GameEngine::FormPolygon(const POINT ptsArr[], int count, bool close) const

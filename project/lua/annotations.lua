@@ -197,6 +197,7 @@ function GameEngine:get_draw_color() end
 --- @return nil
 function GameEngine:debug(message) end
 
+--- @type GameEngine
 GAME_ENGINE = nil
 
 --- @class Bitmap

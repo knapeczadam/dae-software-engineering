@@ -1,14 +1,6 @@
--- Constants
-local TITLE  = "Core"
-local WIDTH  = 500
-local HEIGHT = 500
-local FRAME  = 50
 
 function initialize()
-    GAME_ENGINE:set_title(TITLE)
-    GAME_ENGINE:set_width(WIDTH)
-    GAME_ENGINE:set_height(HEIGHT)
-    GAME_ENGINE:set_frame(FRAME)
+
 end
 
 function start()
@@ -20,7 +12,7 @@ function end_()
 end
 
 function paint(rect)
-    GAME_ENGINE:fill_window_rect(0)
+
 end
 
 function tick()

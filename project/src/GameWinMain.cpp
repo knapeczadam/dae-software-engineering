@@ -131,10 +131,10 @@ void AllocateConsole()
 	}
 }
 
-std::vector<tstring> ParseCommandLine(LPWSTR lpCmdLine)
+auto ParseCommandLine(LPWSTR lpCmdLine) -> std::vector<tstring>
 {
     std::vector<tstring> args;
-    tstring cmdLine(lpCmdLine);
+    tstring const cmdLine(lpCmdLine);
     tstring currentArg;
     bool insideQuotes = false;
 

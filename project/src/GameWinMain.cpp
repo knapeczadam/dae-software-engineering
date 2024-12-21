@@ -28,6 +28,21 @@ void InitLua(std::string const &scriptName)
     auto &lua = GetLua();
     lua.open_libraries(sol::lib::base, sol::lib::package, sol::lib::math, sol::lib::table, sol::lib::string);
 
+    lua.new_usertype<POINT>(
+	    "POINT",
+	    sol::constructors<POINT(int, int)>()
+    );
+
+	lua.new_usertype<Bitmap>(
+		"Bitmap",
+		sol::constructors<Bitmap(const tstring&, bool)>(),
+		"set_transparency_color", &Bitmap::SetTransparencyColor,
+		"set_opacity", &Bitmap::SetOpacity,
+		"get_width", &Bitmap::GetWidth,
+		"get_height", &Bitmap::GetHeight
+	);
+
+
 	lua.new_usertype<GameEngine>(
 		"GameEngine",
 		"set_title", &GameEngine::SetTitle,

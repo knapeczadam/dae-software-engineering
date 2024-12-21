@@ -199,3 +199,33 @@ function GameEngine:debug(message) end
 
 GAME_ENGINE = nil
 
+--- @class Bitmap
+Bitmap = {}
+
+--- @param fileName string
+--- @param createAlphaChannel boolean
+--- @return Bitmap
+function Bitmap.new(fileName, createAlphaChannel) end
+
+--- @param color Color
+--- @return nil
+function Bitmap:set_transparency_color(color) end
+
+--- @param opacity number
+--- @return nil
+function Bitmap:set_opacity(opacity) end
+
+--- @return number
+function Bitmap:get_width() end
+
+--- @return number
+function Bitmap:get_height() end
+
+--- @class POINT
+POINT = {}
+
+--- @param x number
+--- @param y number
+--- @return POINT
+function POINT.new(x, y) end
+

@@ -14,6 +14,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)                        # Set the C++ standar
 
 include(FetchContent)                                      # Include the FetchContent module, which allows for downloading and using external dependencies
 
+set(BUILD_TESTING OFF)                                     # Disable testing for the external dependencies
+
 FetchContent_Declare(                                      # FetchContent for the Lua library
         lua
         GIT_REPOSITORY "https://github.com/marovira/lua"   # The repository URL

@@ -253,4 +253,4 @@ function Audio:play(msec_start, msec_stop) end
 function Audio:pause() end
 
 --- @return nil
-function Audio:Stop() end
+function Audio:stop() end

@@ -65,6 +65,23 @@ add_dependencies(${PROJECT_NAME} CopyGameScripts)                    # Ensure th
 
 #---------------------------------------------------------------------------------------------------
 
+                                                                     # Find all audio files in the 'resources/audio' directory
+file(GLOB_RECURSE LUA_SCRIPTS "${CMAKE_CURRENT_SOURCE_DIR}/resources/audio/*.*")
+
+add_custom_target(CopyAudio ALL                                      # Custom target for copying audio files to the output directory
+        COMMENT "Copying audio files to output directory"
+)
+
+add_custom_command(TARGET CopyAudio POST_BUILD                       # Custom command to copy the audio files to the runtime output directory after building
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different
+        ${LUA_SCRIPTS}                                               # Source Lua scripts
+        ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}                            # Destination in the output directory
+)
+
+add_dependencies(${PROJECT_NAME} CopyAudio)                          # Ensure the Lua script copying happens after the main executable is built
+
+#---------------------------------------------------------------------------------------------------
+
 add_custom_target(CopyTestScripts ALL                                # Custom target for copying Lua scripts to the output directory
         COMMENT "Copying Lua test scripts to output directory"
 )

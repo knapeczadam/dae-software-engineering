@@ -465,7 +465,8 @@ public:
 	// Commands are queued, and only sent when Tick() is called. Calling Tick() needs to be done on the main thread (mcisendstring isn't thread safe) 
 	void			Tick				();
 
-	void			Play				(int msecStart = 0, int msecStop = -1);
+	void            Play                ();
+	void			Play				(int msecStart, int msecStop);
 	void			Pause				();
 	void			Stop				();
 	void			SetVolume			(int volume);

@@ -240,13 +240,14 @@ function Audio.new(fileName) end
 --- @return nil
 function Audio:tick() end
 
+--- @return nil
+function Audio:play()
+    Audio:play(0, -1)
+end
 --- @param msec_start number
 --- @param msec_stop number
 --- @return nil
-function Audio:play(msec_start, msec_stop)
-    msec_start = msec_start or 0
-    msec_stop = msec_stop or -1
-end
+function Audio:play(msec_start, msec_stop) end
 
 --- @return nil
 function Audio:pause() end

@@ -46,7 +46,10 @@ void InitLua(std::string const &scriptName)
 		"Audio",
 		sol::constructors<Audio(const tstring&)>(),
 		"tick", &Audio::Tick,
-		"play", &Audio::Play,
+		"play", sol::overload(
+			sol::resolve<void ()>(&Audio::Play),
+			sol::resolve<void (int, int)>(&Audio::Play)
+		),
 		"stop", &Audio::Stop,
 		"pause", &Audio::Pause
 		);

@@ -1807,6 +1807,11 @@ void Audio::Tick()
 	}
 }
 
+void Audio::Play()
+{
+	Play(0, -1);
+}
+
 void Audio::SendMCICommand(const tstring& command)
 {
 	mciSendString(command.c_str(), nullptr, 0, m_hWnd);

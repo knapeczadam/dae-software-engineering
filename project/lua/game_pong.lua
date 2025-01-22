@@ -14,6 +14,8 @@ local BALL_SIZE     = 10
 local PADDLE_SPEED = 8
 local BALL_SPEED   = 5
 
+local bitmap = Bitmap.new("ball.bmp", false)
+
 -- Game state
 local paddle1_y
 local paddle2_y
@@ -72,7 +74,8 @@ function paint(rect)
 
     -- Draw the ball
     GAME_ENGINE:set_color(Color.WHITE)
-    GAME_ENGINE:fill_rect(ball_x, ball_y, ball_x + BALL_SIZE, ball_y + BALL_SIZE)
+    --GAME_ENGINE:fill_rect(ball_x, ball_y, ball_x + BALL_SIZE, ball_y + BALL_SIZE)
+    GAME_ENGINE:draw_bitmap(bitmap, ball_x, ball_y)
 
     -- Draw the score
     GAME_ENGINE:draw_string("Player 1: " .. score1, 10, 10)

@@ -1,20 +1,21 @@
 local math = require("math")
 require("event")
+require("color")
 
 -- Constants
-local WIDTH = 500
+local WIDTH  = 500
 local HEIGHT = 500
-local FRAME = 50
+local FRAME  =  50
 
-local PADDLE_WIDTH = 100
-local PADDLE_HEIGHT = 20
-local BALL_SIZE = 10
-local BRICK_ROWS = 6
-local BRICK_COLUMNS = 10
-local BRICK_PADDING = 10
-local BRICK_WIDTH = (WIDTH - ((BRICK_COLUMNS + 1) * BRICK_PADDING)) // BRICK_COLUMNS
-local BRICK_HEIGHT = 20
-local COLORS = {0x4b50ba, 0x4271bb, 0x3c7dad, 0x3fa3a4, 0x519f5f, 0xC24641}
+local PADDLE_WIDTH  = 100
+local PADDLE_HEIGHT =  20
+local BALL_SIZE     =  10
+local BRICK_ROWS    =   6
+local BRICK_COLUMNS =  10
+local BRICK_PADDING =  10
+local BRICK_WIDTH   = (WIDTH - ((BRICK_COLUMNS + 1) * BRICK_PADDING)) // BRICK_COLUMNS
+local BRICK_HEIGHT  = 20
+local COLORS        = {0x4b50ba, 0x4271bb, 0x3c7dad, 0x3fa3a4, 0x519f5f, 0xC24641}
 
 -- Game state
 local paddle_x
@@ -32,17 +33,17 @@ local game_win
 local audio = Audio.new("bump.wav")
 
 function reset()
-    paddle_x = (WIDTH - PADDLE_WIDTH) // 2
-    paddle_y = HEIGHT - PADDLE_HEIGHT
-    ball_x = WIDTH // 2
-    ball_y = HEIGHT // 2
-    ball_dx = 5
-    ball_dy = -5
+    paddle_x  = (WIDTH - PADDLE_WIDTH) // 2
+    paddle_y  = HEIGHT - PADDLE_HEIGHT
+    ball_x    = WIDTH // 2
+    ball_y    = HEIGHT // 2
+    ball_dx   =  5
+    ball_dy   = -5
     paddle_dx = 10
-    bricks = {}
-    score = 0
+    bricks    = {}
+    score     = 0
     game_over = false
-    game_win = false
+    game_win  = false
 
     -- Create bricks
     for row = 1, BRICK_ROWS do
@@ -69,14 +70,14 @@ end
 
 function paint(rect)
     -- Clear the screen
-    GAME_ENGINE:fill_window_rect(0)
+    GAME_ENGINE:fill_window_rect(Color.BLACK)
 
     -- Draw the paddle
     GAME_ENGINE:set_color(0x4b50ba) -- Red
     GAME_ENGINE:fill_rect(paddle_x, paddle_y, paddle_x + PADDLE_WIDTH, paddle_y + PADDLE_HEIGHT)
 
     -- Draw the ball
-    GAME_ENGINE:set_color(0xFFFFFF) -- White
+    GAME_ENGINE:set_color(Color.WHITE)
     GAME_ENGINE:fill_rect(ball_x, ball_y, ball_x + BALL_SIZE, ball_y + BALL_SIZE)
 
     -- Draw the bricks
@@ -92,7 +93,7 @@ function paint(rect)
     end
 
     -- Draw the score
-    GAME_ENGINE:set_color(0xFFFFFF) -- White
+    GAME_ENGINE:set_color(Color.WHITE)
     --GAME_ENGINE:draw_string("Score: " .. score, 10, 10)
 
     -- Draw "Game Over" if necessary
@@ -158,7 +159,6 @@ function tick()
         local hit_ratio = hit_position // (PADDLE_WIDTH // 2)
 
         -- Scale ball_dx based on hit position
-        print(hit_ratio * 2)
         ball_dx = ball_dx + hit_ratio * 2 -- Adjust the multiplier (2) for sensitivity
         audio:stop()
         audio:play()

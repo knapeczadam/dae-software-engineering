@@ -1,17 +1,18 @@
 local math = require("math")
 require("event")
+require("color")
 
 -- Constants
-local WIDTH = 500
+local WIDTH  = 500
 local HEIGHT = 300
-local FRAME = 50
+local FRAME  =  50
 
-local PADDLE_WIDTH = 10
+local PADDLE_WIDTH  = 10
 local PADDLE_HEIGHT = 60
-local BALL_SIZE = 10
+local BALL_SIZE     = 10
 
 local PADDLE_SPEED = 8
-local BALL_SPEED = 5
+local BALL_SPEED   = 5
 
 -- Game state
 local paddle1_y
@@ -24,6 +25,7 @@ local score1
 local score2
 local game_over
 
+-- Audio
 local audio = Audio.new("bump.wav")
 
 function reset()
@@ -60,14 +62,16 @@ end
 
 function paint(rect)
     -- Clear the screen
-    GAME_ENGINE:fill_window_rect(0)
+    GAME_ENGINE:fill_window_rect(Color.BLACK)
 
     -- Draw the paddles
-    GAME_ENGINE:set_color(0xFFFFFF) -- White
+    GAME_ENGINE:set_color(Color.RED)
     GAME_ENGINE:fill_rect(10, paddle1_y, 10 + PADDLE_WIDTH, paddle1_y + PADDLE_HEIGHT)
+    GAME_ENGINE:set_color(Color.BLUE)
     GAME_ENGINE:fill_rect(WIDTH - 10 - PADDLE_WIDTH, paddle2_y, WIDTH - 10, paddle2_y + PADDLE_HEIGHT)
 
     -- Draw the ball
+    GAME_ENGINE:set_color(Color.WHITE)
     GAME_ENGINE:fill_rect(ball_x, ball_y, ball_x + BALL_SIZE, ball_y + BALL_SIZE)
 
     -- Draw the score

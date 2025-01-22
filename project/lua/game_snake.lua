@@ -1,22 +1,22 @@
 local math = require("math")
-local os = require("os")
 local table = require("table")
 require("event")
+require("color")
 
 -- Constants
-local WIDTH = 500
+local WIDTH  = 500
 local HEIGHT = 500
-local FRAME = 10
+local FRAME  =  10
 
 local CELL_SIZE = 20
-local GRID_WIDTH = WIDTH // CELL_SIZE
+local GRID_WIDTH  = WIDTH  // CELL_SIZE
 local GRID_HEIGHT = HEIGHT // CELL_SIZE
 
 -- Directions
-local UP = {x = 0, y = -1}
-local DOWN = {x = 0, y = 1}
-local LEFT = {x = -1, y = 0}
-local RIGHT = {x = 1, y = 0}
+local UP    = {x =  0, y = -1}
+local DOWN  = {x =  0, y = 1}
+local LEFT  = {x = -1, y = 0}
+local RIGHT = {x =  1, y = 0}
 
 -- Game state
 local snake
@@ -60,10 +60,10 @@ end
 
 function paint(rect)
     -- Clear the screen
-    GAME_ENGINE:fill_window_rect(0)
+    GAME_ENGINE:fill_window_rect(Color.BLACK)
 
     -- Draw the snake
-    GAME_ENGINE:set_color(0x00FF00) -- Green
+    GAME_ENGINE:set_color(Color.GREEN)
     for _, segment in ipairs(snake) do
         GAME_ENGINE:fill_rect(
             segment.x * CELL_SIZE,
@@ -74,7 +74,7 @@ function paint(rect)
     end
 
     -- Draw the food
-    GAME_ENGINE:set_color(0xFF0000) -- Red
+    GAME_ENGINE:set_color(Color.RED)
     GAME_ENGINE:fill_rect(
         food.x * CELL_SIZE,
         food.y * CELL_SIZE,
@@ -83,7 +83,7 @@ function paint(rect)
     )
 
     -- Draw the score
-    GAME_ENGINE:set_color(0xFFFFFF) -- White
+    GAME_ENGINE:set_color(Color.WHITE)
     GAME_ENGINE:draw_string("Score: " .. score, 10, 10)
 
     -- Draw "Game Over" if necessary

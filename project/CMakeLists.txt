@@ -66,7 +66,7 @@ add_dependencies(${PROJECT_NAME} CopyGameScripts)                    # Ensure th
 #---------------------------------------------------------------------------------------------------
 
                                                                      # Find all audio files in the 'resources/audio' directory
-file(GLOB_RECURSE LUA_SCRIPTS "${CMAKE_CURRENT_SOURCE_DIR}/resources/audio/*.*")
+file(GLOB_RECURSE LUA_SCRIPTS "${CMAKE_CURRENT_SOURCE_DIR}/resources/*.*")
 
 add_custom_target(CopyAudio ALL                                      # Custom target for copying audio files to the output directory
         COMMENT "Copying audio files to output directory"

@@ -159,13 +159,13 @@ end
 
 function check_keyboard()
     -- Change direction based on key press
-    if GAME_ENGINE:is_key_down(KeyCode.UpArrow) and direction ~= DOWN then
+    if (GAME_ENGINE:is_key_down(KeyCode.UpArrow) or GAME_ENGINE:is_key_down(KeyCode.W)) and direction ~= DOWN then
         direction = UP
-    elseif GAME_ENGINE:is_key_down(KeyCode.DownArrow) and direction ~= UP then
+    elseif (GAME_ENGINE:is_key_down(KeyCode.DownArrow) or GAME_ENGINE:is_key_down(KeyCode.S)) and direction ~= UP then
         direction = DOWN
-    elseif GAME_ENGINE:is_key_down(KeyCode.LeftArrow) and direction ~= RIGHT then
+    elseif (GAME_ENGINE:is_key_down(KeyCode.LeftArrow) or GAME_ENGINE:is_key_down(KeyCode.A)) and direction ~= RIGHT then
         direction = LEFT
-    elseif GAME_ENGINE:is_key_down(KeyCode.RightArrow) and direction ~= LEFT then
+    elseif (GAME_ENGINE:is_key_down(KeyCode.RightArrow) or GAME_ENGINE:is_key_down(KeyCode.D)) and direction ~= LEFT then
         direction = RIGHT
     end
 

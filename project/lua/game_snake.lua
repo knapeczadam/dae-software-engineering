@@ -12,6 +12,8 @@ local CELL_SIZE = 20
 local GRID_WIDTH  = WIDTH  // CELL_SIZE
 local GRID_HEIGHT = HEIGHT // CELL_SIZE
 
+local bitmap = Bitmap.new("fruit.bmp", true)
+
 -- Directions
 local UP    = {x =  0, y = -1}
 local DOWN  = {x =  0, y = 1}
@@ -74,13 +76,14 @@ function paint(rect)
     end
 
     -- Draw the food
-    GAME_ENGINE:set_color(Color.RED)
-    GAME_ENGINE:fill_rect(
-        food.x * CELL_SIZE,
-        food.y * CELL_SIZE,
-        (food.x + 1) * CELL_SIZE,
-        (food.y + 1) * CELL_SIZE
-    )
+    --GAME_ENGINE:set_color(Color.RED)
+    --GAME_ENGINE:fill_rect(
+    --    food.x * CELL_SIZE,
+    --    food.y * CELL_SIZE,
+    --    (food.x + 1) * CELL_SIZE,
+    --    (food.y + 1) * CELL_SIZE
+    --)
+    GAME_ENGINE:draw_bitmap(bitmap, food.x * CELL_SIZE, food.y * CELL_SIZE)
 
     -- Draw the score
     GAME_ENGINE:set_color(Color.WHITE)

@@ -7,6 +7,8 @@ local WIDTH  = 500
 local HEIGHT = 500
 local FRAME  =  50
 
+local bitmap = Bitmap.new("ball.bmp", false)
+
 local PADDLE_WIDTH  = 100
 local PADDLE_HEIGHT =  20
 local BALL_SIZE     =  10
@@ -78,7 +80,8 @@ function paint(rect)
 
     -- Draw the ball
     GAME_ENGINE:set_color(Color.WHITE)
-    GAME_ENGINE:fill_rect(ball_x, ball_y, ball_x + BALL_SIZE, ball_y + BALL_SIZE)
+    --GAME_ENGINE:fill_rect(ball_x, ball_y, ball_x + BALL_SIZE, ball_y + BALL_SIZE)
+    GAME_ENGINE:draw_bitmap(bitmap, ball_x, ball_y)
 
     -- Draw the bricks
     for row = 1, BRICK_ROWS do

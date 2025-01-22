@@ -42,6 +42,14 @@ void InitLua(std::string const &scriptName)
 		"get_height", &Bitmap::GetHeight
 	);
 
+	lua.new_usertype<Audio>(
+		"Audio",
+		sol::constructors<Audio(const tstring&)>(),
+		"tick", &Audio::Tick,
+		"play", &Audio::Play,
+		"stop", &Audio::Stop,
+		"pause", &Audio::Pause
+		);
 
 	lua.new_usertype<GameEngine>(
 		"GameEngine",

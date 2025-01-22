@@ -230,3 +230,26 @@ POINT = {}
 --- @return POINT
 function POINT.new(x, y) end
 
+--- @class Audio
+Audio = {}
+
+--- @param fileName string
+--- @return Bitmap
+function Audio.new(fileName) end
+
+--- @return nil
+function Audio:tick() end
+
+--- @param msec_start number
+--- @param msec_stop number
+--- @return nil
+function Audio:play(msec_start, msec_stop)
+    msec_start = msec_start or 0
+    msec_stop = msec_stop or -1
+end
+
+--- @return nil
+function Audio:pause() end
+
+--- @return nil
+function Audio:Stop() end

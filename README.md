@@ -29,8 +29,8 @@ The project includes three small mini-games: **Pong**, **Snake**, and **Breakout
 
 ## 👨‍🏫 Teaching Staff
 
-- **Co-ordinator:** Goussaert Thomas  
-- **Other teaching staff:** Delaere Matthieu  
+- **Co-ordinator:** Thomas Goussaert
+- **Other teaching staff:** Matthieu Delaere
 
 ---
 

@@ -1,11 +1,11 @@
-# 🛠️ Software Engineering – Lua Bindings (2024)
+# 🛠️ Software Engineering – Lua Bindings
 
 Hey there, fellow DAE student, curious visitor, or software enthusiast 👋  
-Welcome to my **Software Engineering** repository — the **final project (2024, third semester)** at **Digital Arts & Entertainment**, **Howest University**, **Kortrijk, Belgium**.
+Welcome to my **Software Engineering** repository — the **final project (2024, third semester)** at **DAE**.
 
 ---
 
-## 🗂️ About this repository
+## 🗄️ About this repository
 
 This repo contains the **final project** for the **Software Engineering** course.  
 It focuses on **modular C++ development**, **library creation**, and **Lua integration**.  
@@ -16,12 +16,12 @@ The project includes three small mini-games: **Pong**, **Snake**, and **Breakout
 
 ---
 
-## 🧱 Course Information
+## 🔎 Course Information
 
-**📘 Course:** Software Engineering  
-**🏫 University:** Howest DAE – Digital Arts & Entertainment  
+**📚 Course:** Software Engineering  
+**🏫 University:** Howest University of Applied Sciences - Digital Arts and Entertainment   
 **📍 Location:** Kortrijk, Belgium  
-**🗓️ Semester:** 2024 – Third semester  
+**🗓️ Academic year:** 2023–24 | Third semester  
 **🎓 Study load:** 6 credits  
 **⏱️ Total study time:** 180 hours  
 
@@ -34,7 +34,7 @@ The project includes three small mini-games: **Pong**, **Snake**, and **Breakout
 
 ---
 
-## 🎯 Learning Goals (LR01–LR07)
+## 🎯 Learning Goals
 
 - Develops software projects modularly using the **library concept**.  
 - Collaborates effectively in a **multidisciplinary team**.  
@@ -56,7 +56,7 @@ The project includes three small mini-games: **Pong**, **Snake**, and **Breakout
 
 ---
 
-## 🔖 Repository Structure
+## 📂 Repository Structure
 
 All project code is on the **main branch**, implementing **three mini-games** using Lua scripts within a modular C++ framework.
 
@@ -79,10 +79,10 @@ If you’re exploring professional C++ projects with scripting: **experiment, mo
 
 ---
 
-### 🪪 License
+### ⚖️ License
 This repository is licensed under the **MIT License** — feel free to explore, learn, or reuse for study purposes.
 
 ---
 
 *Made with libraries, Lua, and curiosity 🛠️  
-— Adam*
+— Ádám*

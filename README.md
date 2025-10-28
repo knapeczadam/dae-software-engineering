@@ -1,4 +1,4 @@
-# 🛠️ Software Engineering – Lua Bindings
+# 🌚 Software Engineering  
 
 Hey there, fellow DAE student, curious visitor, or software enthusiast 👋  
 Welcome to my **Software Engineering** repository — the **final project (2024, third semester)** at **DAE**.

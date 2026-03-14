@@ -81,8 +81,3 @@ If you’re exploring professional C++ projects with scripting: **experiment, mo
 
 ### ⚖️ License
 This repository is licensed under the **MIT License** — feel free to explore, learn, or reuse for study purposes.
-
----
-
-*Made with libraries, Lua, and curiosity 🛠️  
-— Ádám*
